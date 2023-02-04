@@ -9,6 +9,7 @@ $("#currentDay").text(currentDate);
 // Fetch request for weather based on city name
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 function getWeather(city) {
+    //CANT GET CITY NAME VARIABLE TO WORK IN QUERY USING LONDON, UK FOR NOW TO GRAB THE API FETCH TO GET WEATHER TO DISPLAY 
     var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London,uk' + cityName + '&appid=' + APIkey;
 
     fetch(requestUrl)
