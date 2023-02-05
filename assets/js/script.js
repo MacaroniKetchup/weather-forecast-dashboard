@@ -10,8 +10,9 @@ var cityWindEl = document.querySelector(".cityWind");
 var cityHumidEl = document.querySelector(".cityHuimd");
 
 // Date and time Formatting for header
-var currentDate = today.format('YYYY/DD/MM h:mm a ');
+var currentDate = today.format('MM/DD/YYYY');
 $("#currentDay").text(currentDate);
+console.log(currentDate)
 
 // Fetch request for weather based on city name
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
@@ -59,8 +60,9 @@ function getWeather(city) {
 
 // Displays Current Weather info on screen
 function displayWeather(weather) {
+    let exactTime = dayjs.unix(weather.dt);
     cityNameEl.textContent = weather.name;
-    cityNameDateEL.textContent = weather.dt;
+    cityNameDateEL.textContent = exactTime;
     // cityWeatherIconEl.textContent = weather[0].icon;
     cityTempEl.textContent = weather.main.temp.toString() + "°F";
     cityWindEl.textContent = weather.wind.speed.toString() + "MPH";
