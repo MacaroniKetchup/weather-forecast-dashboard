@@ -7,7 +7,7 @@ var cityNameDateEL = document.querySelector(".cityNameDate");
 var cityWeatherIconEl = document.querySelector(".cityWeatherIcon");
 var cityTempEl = document.querySelector(".cityTemp");
 var cityWindEl = document.querySelector(".cityWind");
-var cityHumidEl = document.querySelector(".cityHuimd");
+var cityHumidEl = document.querySelector(".cityHumid");
 
 // Date and time Formatting for header
 var currentDate = today.format('MM/DD/YYYY');
@@ -64,9 +64,9 @@ function displayWeather(weather) {
     cityNameEl.textContent = weather.name;
     cityNameDateEL.textContent = exactTime;
     // cityWeatherIconEl.textContent = weather[0].icon;
-    cityTempEl.textContent = weather.main.temp.toString() + "°F";
-    cityWindEl.textContent = weather.wind.speed.toString() + "MPH";
-    cityHumidEl.textContent = weather.main.humidity.toString() + "%";
+    cityTempEl.textContent = "Temp: " + weather.main.temp.toString() + "°F";
+    cityWindEl.textContent = "Wind: " + weather.wind.speed.toString() + "MPH";
+    cityHumidEl.textContent = "Humidity: " + weather.main.humidity.toString() + "%";
 }
 
 // Display 5 Day Forcast
