@@ -62,10 +62,10 @@ function getWeather(city) {
 function displayWeather(weather) {
     cityNameEl.textContent = weather.name;
     cityNameDateEL.textContent = weather.dt;
-    // cityWeatherIconEl.textContent = weather.id.icon;
-    cityTempEl.textContent = weather.main.temp.toString();
-    cityWindEl.textContent = weather.wind.speed.toString();
-    cityHumidEl.textContent = weather.main.humidity.toString();
+    // cityWeatherIconEl.textContent = weather[0].icon;
+    cityTempEl.textContent = weather.main.temp.toString() + "°F";
+    cityWindEl.textContent = weather.wind.speed.toString() + "MPH";
+    cityHumidEl.textContent = weather.main.humidity.toString() + "%";
 }
 
 // 5 Day Forecast Pull
