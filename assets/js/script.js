@@ -2,70 +2,94 @@ var APIkey = "d9f33c7e6c4bc9f6d8b69aa6426ef777";
 var cityName = "";
 var today = dayjs();
 
-var cityNameEl = document.querySelector(".cityName h2");
-var cityNameDateEL = document.querySelector(".cityNameDate div");
-var cityWeatherIconEl = document.querySelector(".cityWeatherIcon img");
-var cityTempEl = document.querySelector(".cityTemp p");
-var cityWindEl = document.querySelector(".cityWind p");
-var cityHumidEl = document.querySelector(".cityHuimd p");
+var cityNameEl = document.querySelector(".cityName");
+var cityNameDateEL = document.querySelector(".cityNameDate");
+var cityWeatherIconEl = document.querySelector(".cityWeatherIcon");
+var cityTempEl = document.querySelector(".cityTemp");
+var cityWindEl = document.querySelector(".cityWind");
+var cityHumidEl = document.querySelector(".cityHuimd");
 
 
 // Date and time Formatting for header
-var currentDate = today.format('MM/ D/ YYYY h:mm a ');
+var currentDate = today.format('YYYY/DD/MM h:mm a ');
 $("#currentDay").text(currentDate);
 
 // Fetch request for weather based on city name
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 function getWeather(city) {
     //CANT GET CITY NAME VARIABLE TO WORK IN QUERY USING LONDON, UK FOR NOW TO GRAB THE API FETCH TO GET WEATHER TO DISPLAY 
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London,uk' + cityName + '&appid=' + APIkey;
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial&appid=' + APIkey;
 
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-         weather.city = data.name;
-         weather.date = data.dt;
-         weather.iconId = data.weather[0].icon;
-         weather.temp = data.main.temp - IMPERIAL;
-         weather.wind = data.wind_speed;
-         weather.humindity = data.main.humidity;
-            
-            console.log(data)
+
+            // weather.city = data.name;
+            // weather.date = data.dt;
+            // weather.iconId = data.weather[0].icon;
+            // weather.temp = data.main.temp - IMPERIAL;
+            // weather.wind = data.wind_speed;
+            // weather.humindity = data.main.humidity;
+            console.log("first-fetch", data)
+            displayWeather(data);
         })
-        .then(function () {
-            displayWeather();
+
+        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' +APIkey;
+
+        fetch(forecastUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then (function(data) {
+            console.log("forecast-fetch",data);
+            displayForecast(data);
         })
         .catch(function () {
-            // catch any errors
+            // catch errors
+        })
+        .catch(function () {
+            // catch errors
         });
 
 }
 
-window.onload = function () {
-    getWeather(cityName);
+// function getForecast(city) {
+// }
 
+// Attempting to display info on screen
+function displayWeather(weather) {
+    cityNameEl.textContent = weather.name;
+    cityNameDateEL.textContent = weather.dt;
+    // cityWeatherIconEl.textContent = weather.id.icon;
+    cityTempEl.textContent = weather.main.temp.toString();
+    cityWindEl.textContent = weather.wind.speed.toString();
+    cityHumidEl.textContent = weather.main.humidity.toString();
 }
 
-    // var cityName = data.name;
-    // var cityNameDate = data.current.dt;
-    // var cityWeatherIcon = data.current.weather[0].icon;
-    // var cityTemp = data.current.temp;
-    // var cityWind = data.current.wind_speed;
-    // var cityHumid = data.current.humidity;
+// 5 Day Forecast Pull
 
-    // Attempting to display info on screen
-    function displayWeather() {
 
-        cityNameEl.innerHTML = `${weather.city}`;
-        cityNameDateEL.innerHTML =`${weather.date}`;
-        cityWeatherIconEl.innerHTML = `${weather.iconId}`;
-        cityTempEl.innerHTML = `${weather.temp}`;
-        cityWindEl.innerHTML = `${weather.wind}`;
-        cityHumidEl.innerHMTL = `${weather.humidity}`;
 
-    }
+
+
+
+
+
+// ------------------------------------------------------------------------------------------------------
+// window.onload = function () {
+//     getWeather(cityName);
+
+// }
+
+// var cityName = data.name;
+// var cityNameDate = data.current.dt;
+// var cityWeatherIcon = data.current.weather[0].icon;
+// var cityTemp = data.current.temp;
+// var cityWind = data.current.wind_speed;
+// var cityHumid = data.current.humidity;
+
 
 // ------------------------------------------------------------------------------------------------------
 // Display current weather
@@ -115,15 +139,15 @@ window.onload = function () {
 //----------------------------------------------------------------------------------------------------------
 //Storage
 // Click Function to search button on #searchBtn
-// $('#searchBtn').on('click', function(event) {
-//     event.preventDefault();
+$('#searchBtn').on('click', function (event) {
+    event.preventDefault();
 
-//     cityName = $('#city-search').val();
-//     if (cityName === ''){
-//         return alert('Please Enter Valid City Name ');
+    cityName = $('#city-search').val();
+    if (cityName === '') {
+        return alert('Please Enter Valid City Name ');
 
-//     }
-//     getWeather(cityName);
+    }
+    getWeather(cityName);
 
-//     localStorage.setItem(cityName);
-// });
+    // localStorage.setItem(cityName);
+});

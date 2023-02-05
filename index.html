@@ -27,7 +27,8 @@
             <div class="card">
                 <h4 class="card-header">Search for a City</h4>
                 <form class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="city-search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                        id="city-search">
                     <button class="btn btn-outline-success my-2" style="width:100%" type="submit" id="searchBtn">Enter a
                         City</button>
                 </form>
@@ -43,16 +44,56 @@
             </div>
         </div>
 
-        <div class="containter-fluid column col-3 border border-success">
+        <div class="containter-fluid column col-sml-8 border border-success mb-5">
             <div class="row" id="currentWeather"></div>
             <h2 class="cityName"></h2>
-            <div class="cityNameDate">
-                <img class="cityWeatherIcon">
-                <p class="cityTemp"></p>
-                <p class="cityWind"></p>
-                <p class="cityHumid"></p>
+            <div class="cityNameDate"></div>
+            <img class="cityWeatherIcon">
+            <p class="cityTemp"></p>
+            <p class="cityWind"></p>
+            <p class="cityHumid"></p>
+
+            <div class="row d-block" id="fiveDayForecast"></div>
+            <h2 class="futureForecast" id="futureForecast"></h2>
+            <div id="forecastCards" class="forecastCards d-flex justify-content-between">
+
+                <div class="futureCard bg-success rounded">
+                    <p class="futureDate" id="futureDate-1"></p>
+                    <img class="futureWeatherIcon">
+                    <p class="futureTemp"></p>
+                    <p class="futureHumid"></p>
+                </div>
+
+                <div class="futureCard bg-success rounded">
+                    <p class="futureDate" id="futureDate-1"></p>
+                    <img class="futureWeatherIcon">
+                    <p class="futureTemp"></p>
+                    <p class="futureHumid"></p>
+                </div>
+
+                <div class="futureCard bg-success rounded">
+                    <p class="futureDate" id="futureDate-1"></p>
+                    <img class="futureWeatherIcon">
+                    <p class="futureTemp"></p>
+                    <p class="futureHumid"></p>
+                </div>
+
+                <div class="futureCard bg-success rounded">
+                    <p class="futureDate" id="futureDate-1"></p>
+                    <img class="futureWeatherIcon">
+                    <p class="futureTemp"></p>
+                    <p class="futureHumid"></p>
+                </div>
+
+                <div class="futureCard bg-success rounded">
+                    <p class="futureDate" id="futureDate-1"></p>
+                    <img class="futureWeatherIcon">
+                    <p class="futureTemp"></p>
+                    <p class="futureHumid"></p>
+                </div>
+
             </div>
-            <div class="d-flex flex-row flex-wrap justify-content-between" id="fiveDayForecast"></div>
+
 
             <!-- The 5 day forcast should display here-->
 
@@ -63,7 +104,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
 <script src="./assets/js/script.js"></script>
 
