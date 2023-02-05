@@ -9,7 +9,6 @@ var cityTempEl = document.querySelector(".cityTemp");
 var cityWindEl = document.querySelector(".cityWind");
 var cityHumidEl = document.querySelector(".cityHuimd");
 
-
 // Date and time Formatting for header
 var currentDate = today.format('YYYY/DD/MM h:mm a ');
 $("#currentDay").text(currentDate);
@@ -17,7 +16,7 @@ $("#currentDay").text(currentDate);
 // Fetch request for weather based on city name
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 function getWeather(city) {
-    //CANT GET CITY NAME VARIABLE TO WORK IN QUERY USING LONDON, UK FOR NOW TO GRAB THE API FETCH TO GET WEATHER TO DISPLAY 
+
     var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=imperial&appid=' + APIkey;
 
     fetch(requestUrl)
@@ -25,7 +24,6 @@ function getWeather(city) {
             return response.json();
         })
         .then(function (data) {
-
             // weather.city = data.name;
             // weather.date = data.dt;
             // weather.iconId = data.weather[0].icon;
@@ -36,6 +34,7 @@ function getWeather(city) {
             displayWeather(data);
         })
 
+        // 5 Day Forecast Fetch
         var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' +APIkey;
 
         fetch(forecastUrl)
@@ -58,7 +57,7 @@ function getWeather(city) {
 // function getForecast(city) {
 // }
 
-// Attempting to display info on screen
+// Displays Current Weather info on screen
 function displayWeather(weather) {
     cityNameEl.textContent = weather.name;
     cityNameDateEL.textContent = weather.dt;
@@ -68,7 +67,7 @@ function displayWeather(weather) {
     cityHumidEl.textContent = weather.main.humidity.toString() + "%";
 }
 
-// 5 Day Forecast Pull
+// Display 5 Day Forcast
 
 
 
