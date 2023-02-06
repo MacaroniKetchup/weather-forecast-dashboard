@@ -25,26 +25,26 @@ function getWeather(city) {
             return response.json();
         })
         .then(function (data) {
-            // weather.city = data.name;
-            // weather.date = data.dt;
-            // weather.iconId = data.weather[0].icon;
-            // weather.temp = data.main.temp - IMPERIAL;
-            // weather.wind = data.wind_speed;
-            // weather.humindity = data.main.humidity;
+
             console.log("first-fetch", data)
             displayWeather(data);
         })
 
-        // 5 Day Forecast Fetch
-        var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' +APIkey;
+    // 5 Day Forecast Fetch
+    var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
 
-        fetch(forecastUrl)
+    fetch(forecastUrl)
         .then(function (response) {
             return response.json();
         })
-        .then (function(data) {
-            console.log("forecast-fetch",data);
+        .then(function (data) {
+            console.log("forecast-fetch", data);
+            console.log(dayjs.unix(data.list[0].dt));
             displayForecast(data);
+            // let days = data.list
+            //     .filter(day => {
+            //         return day.dt_txt.endsWith("15:00:00")
+            //     })
         })
         .catch(function () {
             // catch errors
@@ -54,9 +54,6 @@ function getWeather(city) {
         });
 
 }
-
-// function getForecast(city) {
-// }
 
 // Displays Current Weather info on screen
 function displayWeather(weather) {
@@ -70,6 +67,58 @@ function displayWeather(weather) {
 }
 
 // Display 5 Day Forcast
+function displayForecast(data) {
+
+for (var i = 1; 1 <=5; i++) {
+    var date;
+    var icon;
+    var temp;
+    var wind
+    var humidity;
+// in the list Array(40) 3, 11, 19, 27, 35 are all index's that 15:00:00 weather timestamp updates 
+// [3, 11, 19, 27, 35]
+var fiveDayForecastEl = $('#faveDayForecast');
+
+    date = data.list.dt
+    let forecastTime = dayjs.unix(data.list.dt).format("MM/DD/YYYY")
+    temp = data.list.main.temp
+    wind = data.list.wind
+    humidity = data.list.main.humidity
+    // icon = data.list.weather[1].icon
+
+    var card = document.createElement('div');
+    card.classList.add('card', 'col-2', 'm-1', 'bg-success', 'text-white');
+
+    var cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+    cardBody.innerHTML = `<h6>${date}</h6>
+                          ${temp}°F
+                          ${wind}MPH
+                          ${humidity}%`
+
+    card.appendChild(cardBody);
+    fiveDayForecastEl.append(card);
+
+  }
+
+}
+
+
+//Storage
+// Click Function to search button on #searchBtn
+$('#searchBtn').on('click', function (event) {
+    event.preventDefault();
+
+    cityName = $('#city-search').val();
+    if (cityName === '') {
+        return alert('Please Enter Valid City Name ');
+
+    }
+    getWeather(cityName);
+
+    // localStorage.setItem(cityName);
+});
+
 
 
 
@@ -138,17 +187,3 @@ function displayWeather(weather) {
 // })
 
 //----------------------------------------------------------------------------------------------------------
-//Storage
-// Click Function to search button on #searchBtn
-$('#searchBtn').on('click', function (event) {
-    event.preventDefault();
-
-    cityName = $('#city-search').val();
-    if (cityName === '') {
-        return alert('Please Enter Valid City Name ');
-
-    }
-    getWeather(cityName);
-
-    // localStorage.setItem(cityName);
-});

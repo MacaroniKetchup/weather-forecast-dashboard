@@ -11,95 +11,58 @@
     <title>Weather Forecast Dashboard</title>
 </head>
 
+<header class="container-fluid bg-dark text-light mb-5 p-3">
+    <div class="row text-center bg- text-white">
+        <h1>Weather Dashboard</h1>
+        <h3 class="ms-auto">
+            Current & 5-Day Forecast
+        </h3>
+        <h4 id="currentDay" class="ms-auto"></h4>
+    </div>
+</header>
+
 <body>
-    <header class="container-fluid bg-dark text-light mb-5 p-3">
-        <div class="row text-center bg- text-white">
-            <h1>Weather Dashboard</h1>
-            <h3 class="ms-auto">
-                Current & 5-Day Forecast
-            </h3>
-            <h4 id="currentDay" class="ms-auto"></h4>
-        </div>
-    </header>
+    <div class="column col-3">
+        <div class="card container-fluid">
+            <h4 class="card-header">Search for a City</h4>
+            <form class="d-flex ms-auto">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    id="city-search">
+                <button class="btn btn-outline-success my-2" style="width:100%" type="submit" id="searchBtn">Enter a
+                    City</button>
+            </form>
 
-    <main>
-        <div class="column col-3">
-            <div class="card">
-                <h4 class="card-header">Search for a City</h4>
-                <form class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        id="city-search">
-                    <button class="btn btn-outline-success my-2" style="width:100%" type="submit" id="searchBtn">Enter a
-                        City</button>
-                </form>
+            <button class="btn btn-outline-primary my-2" style="width:100%" type="submit" id="clearBtn">Clear Past
+                Searches</button>
 
-                <button class="btn btn-outline-primary my-2" style="width:100%" type="submit" id="clearBtn">Clear Past
-                    Searches</button>
+            <div class="border-top border-primary" id="pastSearches">
 
-                <div class="border-top border-primary" id="pastSearches">
-
-                    <!-- past searches should show here -->
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Current Weather Display-->
-
-        <div class="containter-fluid column col-sml-8 border border-success mb-5">
-            <div class="row" id="currentWeather"></div>
-            <h2 class="cityName"></h2>
-            <div class="cityNameDate"></div>
-            <img class="cityWeatherIcon">
-            <p class="cityTemp"></p>
-            <p class="cityWind"></p>
-            <p class="cityHumid"></p>
-
-            <!-- The 5 day forcast should display here-->
-
-            <div class="row d-block" id="fiveDayForecast"></div>
-            <h2 class="futureForecast" id="futureForecast"></h2>
-            <div id="forecastCards" class="forecastCards d-flex justify-content-between">
-
-                <div class="futureCard bg-success rounded">
-                    <p class="futureDate" id="futureDate-1"></p>
-                    <img class="futureWeatherIcon">
-                    <p class="futureTemp"></p>
-                    <p class="futureHumid"></p>
-                </div>
-
-                <div class="futureCard bg-success rounded">
-                    <p class="futureDate" id="futureDate-2"></p>
-                    <img class="futureWeatherIcon">
-                    <p class="futureTemp"></p>
-                    <p class="futureHumid"></p>
-                </div>
-
-                <div class="futureCard bg-success rounded">
-                    <p class="futureDate" id="futureDate-3"></p>
-                    <img class="futureWeatherIcon">
-                    <p class="futureTemp"></p>
-                    <p class="futureHumid"></p>
-                </div>
-
-                <div class="futureCard bg-success rounded">
-                    <p class="futureDate" id="futureDate-4"></p>
-                    <img class="futureWeatherIcon">
-                    <p class="futureTemp"></p>
-                    <p class="futureHumid"></p>
-                </div>
-
-                <div class="futureCard bg-success rounded">
-                    <p class="futureDate" id="futureDate-5"></p>
-                    <img class="futureWeatherIcon">
-                    <p class="futureTemp"></p>
-                    <p class="futureHumid"></p>
-                </div>
+                <!-- past searches should show here -->
 
             </div>
+        </div>
+    </div>
+
+    <!-- Current Weather Display-->
+
+    <div class="containter-fluid column col-sml-8 border border-primary bg-success text-white mb-5 justify-content-between">
+        <div class="row" id="currentWeather"></div>
+        <h2 class="cityName"></h2>
+        <div class="cityNameDate"></div>
+        <img class="cityWeatherIcon">
+        <p class="cityTemp"></p>
+        <p class="cityWind"></p>
+        <p class="cityHumid"></p>
+
+        <!-- The 5 day forcast should display here-->
+
+        <div class="row d-block" id="fiveDayForecast"></div>
+        <h2 class="futureForecast" id="futureForecast">5 Day Future Forecast</h2>
+        <div id="forecastCards" class="forecastCards d-flex justify-content-between">
 
         </div>
-    </main>
+
+    </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
