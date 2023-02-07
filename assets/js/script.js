@@ -30,30 +30,56 @@ function getWeather(city) {
             displayWeather(data);
         })
 
-    // 5 Day Forecast Fetch
-    var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
+    // Geo Fetch
 
-    fetch(forecastUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log("forecast-fetch", data);
-            console.log(dayjs.unix(data.list[0].dt));
-            displayForecast(data);
-            // let days = data.list
-            //     .filter(day => {
-            //         return day.dt_txt.endsWith("15:00:00")
-            //     })
-        })
-        .catch(function () {
-            // catch errors
-        })
-        .catch(function () {
-            // catch errors
-        });
+        // var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + cityName + ',appid=' + APIkey;
+        // fetch(geoUrl)
+        //     .then(function (response) {
+        //         return response.json();
+        //     })
+        //     .then(function (geo) {
+        //         console.log("geo-fetch", geo);
+        //         displayGeo(geo);
+        //     })
+        //     .catch(function () {
+
+        //     });
+
+
+    // 5 Day Forecast Fetch
+
+    var forecastUrl = //'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
+
+    // geo forecast api fetch
+    //'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIkey;
+    
+    // var lat = geo.coord.lat
+    // var lon = geo.coord.lon
+        
+        fetch(forecastUrl)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log("forecast-fetch", data);
+                console.log(dayjs.unix(data.list[0].dt));
+                displayForecast(data);
+                // let days = data.list
+                //     .filter(day => {
+                //         return day.dt_txt.endsWith("15:00:00")
+                //     })
+            })
+            .catch(function () {
+                // catch errors
+            });
+
+
 
 }
+
+
+
+
 
 // Displays Current Weather info on screen
 function displayWeather(weather) {
