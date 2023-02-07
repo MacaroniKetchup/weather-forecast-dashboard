@@ -71,7 +71,7 @@ function displayForecast(data) {
 
 for (var i = 1; 1 <=5; i++) {
     var date;
-    var icon;
+    // var icon;
     var temp;
     var wind
     var humidity;
@@ -95,6 +95,8 @@ var fiveDayForecastEl = $('#faveDayForecast');
                           ${temp}°F
                           ${wind}MPH
                           ${humidity}%`
+    console.log(cardBody);
+    console.log(date);
 
     card.appendChild(cardBody);
     fiveDayForecastEl.append(card);
