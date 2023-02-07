@@ -48,7 +48,7 @@ function getWeather(city) {
 
     // 5 Day Forecast Fetch
 
-    var forecastUrl = //'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
+    var forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&units=imperial&appid=' + APIkey;
 
     // geo forecast api fetch
     //'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + APIkey;
