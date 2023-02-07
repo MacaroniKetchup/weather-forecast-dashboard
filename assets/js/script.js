@@ -69,44 +69,59 @@ function displayWeather(weather) {
 // Display 5 Day Forcast
 function displayForecast(data) {
 
-for (var i = 1; 1 <=5; i++) {
-    var date;
-    // var icon;
-    var temp;
-    var wind
-    var humidity;
-// in the list Array(40) 3, 11, 19, 27, 35 are all index's that 15:00:00 weather timestamp updates 
-// [3, 11, 19, 27, 35]
-var fiveDayForecastEl = $('#faveDayForecast');
+    for (var i = 1; 1 <= 5; i++) {
+        var date;
+        // var icon;
+        var temp;
+        var wind
+        var humidity;
+        // in the list Array(40) 3, 11, 19, 27, 35 are all index's that 15:00:00 weather timestamp updates 
+        // [3, 11, 19, 27, 35]
+        var fiveDayForecastEl = $('#faveDayForecast');
 
-    date = data.list.dt
-    let forecastTime = dayjs.unix(data.list.dt).format("MM/DD/YYYY")
-    temp = data.list.main.temp
-    wind = data.list.wind
-    humidity = data.list.main.humidity
-    // icon = data.list.weather[1].icon
+        date = data.list.dt
+        let forecastTime = dayjs.unix(data.list.dt).format("MM/DD/YYYY")
+        temp = data.list.main.temp
+        wind = data.list.wind
+        humidity = data.list.main.humidity
+        // icon = data.list.weather[1].icon
 
-    var card = document.createElement('div');
-    card.classList.add('card', 'col-2', 'm-1', 'bg-success', 'text-white');
+        var card = document.createElement('div');
+        card.classList.add('card', 'col-2', 'm-1', 'bg-success', 'text-white');
 
-    var cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
-    cardBody.innerHTML = `<h6>${date}</h6>
+        var cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+        cardBody.innerHTML = `<h6>${date}</h6>
                           ${temp}°F
                           ${wind}MPH
                           ${humidity}%`
-    console.log(cardBody);
-    console.log(date);
+        console.log(cardBody);
+        console.log(date);
 
-    card.appendChild(cardBody);
-    fiveDayForecastEl.append(card);
+        card.appendChild(cardBody);
+        fiveDayForecastEl.append(card);
 
-  }
+    }
+
+    //Storage
+    // function displaySearchHistory() {
+    //     var storedCities = JSON.parse(localStorage.getItem("cities")) || {};
+    //     var pastSearchesEl = document.getElementById('pastSearches');
+
+    //     pastSearchesEl.innerHTML = '';
+
+    //     var pastCityBtn = document.createElement("button");
+    //     pastCityBtn.classList.add('btn', 'btn-primary', 'my-2', 'past-city');
+    //     pastCityBtn.setAttribute('style', 'width: 100%');
+    //     pastCityBtn.textContent = `${storedCities[i].city}`;
+    //     pastSearchesEl.appendChild(pastCityBtn);
+    // }
+    // return;
 
 }
 
 
-//Storage
+
 // Click Function to search button on #searchBtn
 $('#searchBtn').on('click', function (event) {
     event.preventDefault();
@@ -118,8 +133,12 @@ $('#searchBtn').on('click', function (event) {
     }
     getWeather(cityName);
 
-    // localStorage.setItem(cityName);
+
 });
+
+
+
+
 
 
 
