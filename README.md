@@ -1,10 +1,12 @@
 # Weather Forecast Dashboard
 
-
+A Weather Dashboard where you can search a city name and find the current weather for your searched city!
 
 ## Acknowledgments
 
+-[Fetch the Weather with OpenWeatherMap API and JavaScript](https://bithacker.dev/fetch-weather-openweathermap-api-javascript)
 
+-[Tutorial on building a basic weather api](https://www.youtube.com/watch?v=KqZGuzrY9D4&list=PLfAx0aCVyRjqJcW4QBJRNUFoRWj19oRtd&index=5&t=1945s)
 
 ## Author
 
@@ -12,7 +14,7 @@
 
 ## Demo
 
-![]()
+![Weather Demo](./assets/image/weatherdashboard.png)
 
 ## Deployed Link
 
@@ -20,9 +22,9 @@
 
 ## Features
 
--
+- Search City Weather by Name
 
--
+- Displays current City  w/ Name and current date and time
 
 -
 

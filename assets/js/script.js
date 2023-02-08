@@ -78,9 +78,6 @@ function getWeather(city) {
 }
 
 
-
-
-
 // Displays Current Weather info on screen
 function displayWeather(weather) {
     let exactTime = dayjs.unix(weather.dt);
@@ -92,7 +89,7 @@ function displayWeather(weather) {
     cityHumidEl.textContent = "Humidity: " + weather.main.humidity.toString() + "%";
 }
 
-// Display 5 Day Forcast
+// Display 5 Day Forcast (unfortunatly could not get this to work in alloted time for assignment...)
 function displayForecast(data) {
 
     for (var i = 1; 1 <= 5; i++) {
