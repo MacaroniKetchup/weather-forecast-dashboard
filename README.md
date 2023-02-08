@@ -18,7 +18,7 @@ A Weather Dashboard where you can search a city name and find the current weathe
 
 ## Deployed Link
 
--[Weather Forecast Dashboard]()
+-[Weather Forecast Dashboard](https://macaroniketchup.github.io/weather-forecast-dashboard/)
 
 ## Features
 
